@@ -1,0 +1,42 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-inverse ontop">
+    <a id="homeIcon" class="navbar-brand" href="/home"> OTRA </a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <form id="searchMovieNavbar" class="form-inline" action="/movies/search" method="get">
+                <input class="form-control mr-sm-2" type="text" name="name" placeholder="Search a Movie:" required>
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinemas"> Cinemas </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/movies/exhibitionMovies"> Movies </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        {{#if user}}
+            <li class="nav-item">
+                <form>
+                    <a id="elementWhite" class="btn btn-success" href="/home">{{user.username}}</a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form>
+                    <a id="elementWhite" class="btn btn-danger" href="/auth/logout"> Logout </a>
+                </form>
+            </li>
+        {{else}}
+            <li class="nav-item">
+                <form>
+                    <a id="elementWhite" class="btn btn-success" href="/auth/login"> Login </a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form>
+                    <a id="elementWhite" class="btn btn-info" href="/auth/register"> Register </a>
+                </form>
+            </li>
+        {{/if}}
+    </ul>
+</nav>

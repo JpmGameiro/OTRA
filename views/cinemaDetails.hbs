@@ -1,0 +1,65 @@
+{{> genericNavbar }}
+<div class="container">
+    <h1 id="exhibitionText" align="center"> In Exhibition At {{name}} </h1>
+    <hr>
+    <div class="row">
+        {{#each movies}}
+            <div class="col-3 mb-2 mt-3">
+                <div id="divCard" class="card mb-2 text-center text-dark">
+                    <a href="/movies/{{id}}/details">
+                        {{#if poster}}
+                            <img class="card-img-top" src='http://image.tmdb.org/t/p/w185/{{poster}}'>
+                        {{else}}
+                            <img class="card-img-top" src='/images/defaultPoster.jpg'>
+                        {{/if}}
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{title}} </h5>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    {{#if user}}
+        <div id="editCinema">
+            <div class="row">
+                <button id="centerElement" class="btn btn-info" onclick="manageUpdateCinemaPopUp('{{name}}')">
+                    Update Cinema
+                </button>
+            </div>
+        </div>
+        <h1 id="roomsInCinema" align="center"> Rooms At Cinema {{name}} </h1>
+        <hr>
+        <div class="row">
+            <div id="centerElement">
+                <a class="btn btn-info" href="/cinemas/{{name}}/createRoom">Create Room</a>
+            </div>
+        </div>
+        <div id="roomList" class="row">
+            {{#each rooms}}
+                <div class="col-3 mb-2 mt-3">
+                    <div id="rowCard{{name}}" class="card bg-light text-dark text-center">
+                        <img class="card-img-top" src="/images/ticket.png"/>
+                        <div class="card-body">
+                            <h5 id="name{{name}}" class="card-title"><strong> Name: </strong> {{name}} </h5>
+                            <p id="rows{{name}}" class="card-text"><strong> Rows: </strong> {{rows}} </p>
+                            <p id="seats{{name}}" class="card-text"><strong> Seats Per Row: </strong> {{seatsPerRow}}
+                            </p>
+                            <div id="updateRoom{{name}}">
+                                <button id="centerElement" class="btn btn-info"
+                                        onclick="manageUpdateRoomPopUp('{{cinemaName}}','{{name}}')">
+                                    Update Room
+                                </button>
+                            </div>
+                            <button id="centerElement" class="btn btn-danger"
+                                    onclick="deleteRoom('{{cinemaName}}','{{name}}')">
+                                Delete Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+</div>
+{{> footer }}

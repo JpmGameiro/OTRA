@@ -1,0 +1,75 @@
+{{> genericNavbar }}
+
+<div class="container">
+    <h1 align="center"><strong> {{movie.title}} </strong></h1>
+    <hr>
+    <div class="row mt-4 mb-4">
+        <div class="col align-self-center text-center">
+            <img src='http://image.tmdb.org/t/p/w185//{{movie.poster}}'>
+        </div>
+        <div class="col mb-auto mt-auto">
+            <ul id="movieSpecs">
+                <li><strong>Release Date: </strong> {{movie.releaseDate}} </li>
+                <li><strong>Duration: </strong> {{movie.duration}} minutes</li>
+            </ul>
+        </div>
+    </div>
+    <h2 align="center"> Sessions </h2>
+    <div id="sessionsTable" class="row">
+        {{#if sessions}}
+            <table id="sessionsList" class="table table-striped text-center">
+                <thead>
+                <tr>
+                    <th><strong> Date </strong></th>
+                    <th><strong> Hour </strong></th>
+                    <th><strong> Cinema </strong></th>
+                    <th><strong> Room </strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{# each sessions}}
+                    <tr id="session{{_id}}">
+                        <td id="day{{_id}}">{{date.day}}</td>
+                        <td id="time{{_id}}">{{date.time}}</td>
+                        <td id="cinema{{_id}}">{{cinemaName}}</td>
+                        <td id="room{{_id}}">{{roomName}}</td>
+                        {{#if ../user}}
+                            <td>
+                                <button class="btn btn-info"
+                                        onclick="showEditSessionPopUp('{{../movie.id}}', '{{_id}}') ">Update
+                                    Session
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger"
+                                        onclick="removeSession('{{_id}}', '{{cinemaName}}', '{{roomName}}')">Delete
+                                    Session
+                                </button>
+                            </td>
+                        {{else}}
+                            <td>
+                                <a class="btn btn-info"
+                                   href="/movies/{{movieId}}/{{cinemaName}}/{{roomName}}/session/{{_id}}">
+                                    Go To Session </a>
+                            </td>
+                        {{/if}}
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+    </div>
+    <div id="sessionPopUp" class="div"></div>
+    {{#if user}}
+        {{#if rooms }}
+            <div class="row">
+                <div id="centerElement">
+                    <a class="btn btn-info" href="/movies/{{movie.id}}/createSession">Create New Session</a>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+</div>
+
+
+{{> footer }}

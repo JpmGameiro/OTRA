@@ -1,0 +1,16 @@
+{{> genericNavbar }}
+<div class="container">
+    <h1 align="center"><strong> Buy ticket for {{movieSession.movie.title}} </strong></h1>
+    <h2 align="center"><strong>{{movieSession.session.cinemaName}} </strong></h2>
+    <h2 align="center"><strong>{{movieSession.session.roomName}} </strong></h2>
+    <hr>
+    <div class="row mt-4 mb-4">
+        <div class="row mx-auto">
+            {{showPlacesToBuyTicket movieSession.room.rows movieSession.room.seatsPerRow movieSession.session.seatsAvailable movieSession.session.totalSeats movieSession.session._id movieSession.session.busyPlaces}}
+        </div>
+    </div>
+    <div id="divToAddButtonToBuyTicket"></div>
+</div>
+
+
+{{> footer }}

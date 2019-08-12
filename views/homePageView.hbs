@@ -1,0 +1,28 @@
+{{> genericNavbar }}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="jumbotron-homepage" class="jumbotron" >
+                <h1 id="homeTitle">Welcome to Online Ticket Reservation Application</h1>
+                <p> Here you can reserve your ticket online! </p>
+                <div>
+                    <div class="dropdown" id="dropDownListCinema">
+                        <button onclick="displayDropDownCinema()" id="dropButtonCinema" class="btn btn-primary dropdown-toggle"
+                                type="button" data-toggle="dropButtonCinema">
+                            Choose Cinema
+                        </button>
+                    </div>
+                    <div class="dropdown" id="dropDownListMovie">
+                        <button onclick="displayDropDownMovie()" id="dropButtonMovie" class="btn btn-primary dropdown-toggle"
+                                type="button" data-toggle="dropButtonMovie">
+                            Choose Movie
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> footer }}

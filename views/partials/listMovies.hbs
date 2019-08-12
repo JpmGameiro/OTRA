@@ -1,0 +1,17 @@
+{{#each movies}}
+    <div class="col-3 mb-2 mt-3">
+        <div id="movieCard" class="card bg-light text-dark text-center">
+            <a href="/movies/{{id}}/details">
+                {{#if poster}}
+                    <img class="card-img-top" src='http://image.tmdb.org/t/p/w185/{{poster}}'>
+                {{else}}
+                    <img class="card-img-top" src='/images/defaultPoster.jpg'>
+                {{/if}}
+            </a>
+            <div class="card-body">
+                <h5 class="card-title"> <strong> Title: </strong>{{title}} </h5>
+                <h5 class="card-date"> <strong> Release Date: </strong>{{releaseDate}}</h5>
+            </div>
+        </div>
+    </div>
+{{/each}}
